@@ -5,13 +5,14 @@ const Users = () => {
     const [user, setUsers] = useState(api.users.fetchAll);
 
     const handleDelete = (userID) => {
-        userID.currentTarget.closest("tr").remove();
-        console.log('click')
+        setUsers(prevState=>prevState.filter(item=>item!==userID))
+        console.log(userID)
     };
+
     const renderPhrase = (number) => {
-        if (usersData.length === 0) {
+        if (user.length === 0) {
             number = "никто не тусанет с тобой сегодня";
-        } number = usersData.length + ' тусанет с тобой сегодня'
+        } number = user.length + ' тусанет с тобой сегодня'
         return number
     };
     let usersData = user.map(function (item) {
@@ -29,7 +30,7 @@ const Users = () => {
                          <td>{item.profession.name}</td>
                          <td>{item.completedMeetings}</td>
                          <td>{item.rate}</td>
-                         <td><button className="badge bg-danger" onClick={handleDelete}>delete</button></td>
+                         <td><button className="badge bg-danger" onClick={()=>handleDelete(item)}>delete</button></td>
                      </tr>
                  </>
          )
@@ -38,7 +39,7 @@ const Users = () => {
     console.log()
     return (
         <>
-            <h2><span className="badge bg-primary">{renderPhrase()} </span></h2>
+            <h2><span className="badge bg-primary">{renderPhrase(user.length)}</span></h2>
             <table className="table">
                 <thead>
                 <tr>
