@@ -6,13 +6,10 @@ const Users = () => {
 
     const handleDelete = (userID) => {
         setUsers(prevState=>prevState.filter(item=>item!==userID))
-        console.log(userID)
     };
 
     const renderPhrase = (number) => {
-        if (user.length === 0) {
-            number = "никто не тусанет с тобой сегодня";
-        } number = user.length + ' тусанет с тобой сегодня'
+        number = user.length + ' тусанет с тобой сегодня'
         return number
     };
     let usersData = user.map(function (item) {
@@ -39,6 +36,7 @@ const Users = () => {
     console.log()
     return (
         <>
+
             <h2><span className="badge bg-primary">{renderPhrase(user.length)}</span></h2>
             <table className="table">
                 <thead>
@@ -51,9 +49,7 @@ const Users = () => {
                     <th></th>
                 </tr>
                 </thead>
-                <tbody>
-                {usersData}
-                </tbody>
+                <tbody>{usersData}</tbody>
             </table>
         </>
     );
