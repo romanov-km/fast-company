@@ -10,7 +10,7 @@ const Users = () => {
 
     const renderPhrase = (number) => {
         number = user.length + ' тусанет с тобой сегодня'
-        return number
+        return user.length !==0 ? (<h2><span className="badge bg-primary">{number}</span></h2>) : (<h2><span className="badge bg-danger">никто не тусанет с тобой сегодня</span></h2>)
     };
     let usersData = user.map(function (item) {
          return (
@@ -36,21 +36,22 @@ const Users = () => {
     console.log()
     return (
         <>
+            {renderPhrase()}
+            {user.length !== 0 ? (
 
-            <h2><span className="badge bg-primary">{renderPhrase(user.length)}</span></h2>
-            <table className="table">
-                <thead>
-                <tr>
-                    <th scope="col">Имя</th>
-                    <th scope="col">Качества</th>
-                    <th scope="col">Профессия</th>
-                    <th scope="col">Встретился, раз</th>
-                    <th scope="col">Оценка</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>{usersData}</tbody>
-            </table>
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Имя</th>
+                            <th scope="col">Качества</th>
+                            <th scope="col">Профессия</th>
+                            <th scope="col">Встретился, раз</th>
+                            <th scope="col">Оценка</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>{usersData}</tbody>
+                </table>) : ('')}
         </>
     );
 };
