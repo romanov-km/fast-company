@@ -1,4 +1,3 @@
-const { semi } = require(".prettierrc");
 module.exports = {
     env: {
         browser: true,
