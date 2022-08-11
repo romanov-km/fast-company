@@ -1,8 +1,8 @@
 import React from "react";
 import "../../node_modules/bootstrap-icons/font/bootstrap-icons.css";
+import PropTypes from "prop-types";
 
-
-const Bookmark = ({status, ...rest}) => {
+const Bookmark = ({ status, ...rest }) => {
     return (
         <button
             {...rest}
@@ -12,6 +12,10 @@ const Bookmark = ({status, ...rest}) => {
             }
         ></button>
     );
+};
+
+Bookmark.propTypes = {
+    status: PropTypes.bool
 };
 
 export default Bookmark;
